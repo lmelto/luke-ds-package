@@ -14,3 +14,14 @@ def date_splitter(dataframe, date_column_name):
     dataframe.drop(date_column_name, axis=1, inplace=True)
 
     return dataframe
+
+def char_len(dataframe, text_column_name):
+    """Takes in a df feature and creates a new feature with an integer length 
+    of characters of the passed feature.
+
+    Args:
+        dataframe (pandas df)
+        text_column_name (df column name)
+    """
+
+    return dataframe['text_char_len'] = dataframe[text_column_name].apply(len)
