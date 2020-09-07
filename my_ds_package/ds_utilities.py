@@ -2,7 +2,7 @@ import pandas as pd
 
 
 def char_len(dataframe, text_column_name):
-    """Takes in a df feature and creates a new feature with an integer length 
+    """Takes in a df feature and creates a new feature with an integer length
     of characters of the passed feature.
 
     Args:
