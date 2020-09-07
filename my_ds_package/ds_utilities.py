@@ -11,5 +11,6 @@ def date_splitter(dataframe, date_column_name):
     dataframe['Month'] = dataframe[date_column_name].dt.month
     dataframe['Day'] = dataframe[date_column_name].dt.day
     dataframe.drop(date_column_name, axis=1, inplace=True)
+    
     return dataframe
 
