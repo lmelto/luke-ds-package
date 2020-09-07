@@ -1,20 +1,6 @@
 import pandas as pd
 
 
-def date_splitter(dataframe, date_column_name):
-    """
-    Takes a df and a column name and converts the date into a datetime
-    object, then extracts the day/month/year to new features. Returns new df.
-    """
-    dataframe[date_column_name] = pd.to_datetime(dataframe[date_column_name],
-                                                 infer_datetime_format=True)
-    dataframe['Year'] = dataframe[date_column_name].dt.year
-    dataframe['Month'] = dataframe[date_column_name].dt.month
-    dataframe['Day'] = dataframe[date_column_name].dt.day
-    dataframe.drop(date_column_name, axis=1, inplace=True)
-
-    return dataframe
-
 def char_len(dataframe, text_column_name):
     """Takes in a df feature and creates a new feature with an integer length 
     of characters of the passed feature.
@@ -24,4 +10,21 @@ def char_len(dataframe, text_column_name):
         text_column_name (df column name)
     """
 
-    return dataframe['text_char_len'] = dataframe[text_column_name].apply(len)
+    dataframe['text_char_len'] = dataframe[text_column_name].apply(len)
+
+    return dataframe
+
+
+def split_dates(dataframe, date_column):
+    """Convers date features into pandas datetime objects.
+
+    Args:
+        dataframe (pandas dataframe)
+        date_column (dataframe column)
+    """
+
+    copy_of_df = dataframe.copy()
+    copy_of_df["Year"] = pd.DatetimeIndex(copy_of_df[date_column]).year
+    copy_of_df["Month"] = pd.DatetimeIndex(copy_of_df[date_column]).month
+    copy_of_df["Day"] = pd.DatetimeIndex(copy_of_df[date_column]).day
+    return copy_of_df
