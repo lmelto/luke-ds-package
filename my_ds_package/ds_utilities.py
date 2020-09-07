@@ -27,4 +27,5 @@ def split_dates(dataframe, date_column):
     copy_of_df["Year"] = pd.DatetimeIndex(copy_of_df[date_column]).year
     copy_of_df["Month"] = pd.DatetimeIndex(copy_of_df[date_column]).month
     copy_of_df["Day"] = pd.DatetimeIndex(copy_of_df[date_column]).day
+    
     return copy_of_df
