@@ -29,3 +29,6 @@ def split_dates(dataframe, date_column):
     copy_of_df["Day"] = pd.DatetimeIndex(copy_of_df[date_column]).day
 
     return copy_of_df
+
+if __name__ == "__main__":
+    print('Hello World!')
